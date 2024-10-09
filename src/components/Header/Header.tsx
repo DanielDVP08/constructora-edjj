@@ -91,7 +91,7 @@ export default function Header() {
 
   return (
     <>
-      <Navbar disableAnimation isBordered>
+      <Navbar disableAnimation isBordered className="bg-[#1e3a5f] flex flex-wrap items-center justify-between">
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle />
         </NavbarContent>
@@ -101,8 +101,8 @@ export default function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 src="/assets/2_LOGO.png"
-                width="150"
-                height="40"
+                width={120}
+                height={42}
                 alt="Logo Constructora"
               />
             </Link>
@@ -112,12 +112,12 @@ export default function Header() {
         </NavbarContent>
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarBrand>
+          <NavbarBrand className="w-50 h-full bg-yellow-400 mr-2 px-20">
             <Link href="/" className="flex items-center">
               <Image
                 src="/assets/2_LOGO.png"
-                width="150"
-                height="40"
+                width={120}
+                height={42}
                 alt="Logo Constructora"
               />
             </Link>
@@ -205,7 +205,7 @@ export default function Header() {
               <Link
                 className="w-full"
                 color={index === menuItems.length - 1 ? "danger" : "foreground"}
-                href="#"
+                href="/professionals"
                 size="lg"
               >
                 {item}
