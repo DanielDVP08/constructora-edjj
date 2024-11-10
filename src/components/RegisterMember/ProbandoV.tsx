@@ -16,9 +16,16 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import Image from "next/image";
-import {  UserP } from "../../../types/user";
+// import {  UserP } from "../../../types/user";
 import { UserDropdown } from "../Header/UserDropdown";
 // import { set } from "zod";
+
+type UserP = {
+  name: string | null | undefined;
+  email: string | null | undefined;
+  image: string | null | undefined;
+  role: string | null | undefined;
+};
 
 export default function ProfileRegistration(user: UserP) {
   const [step, setStep] = useState(1);
