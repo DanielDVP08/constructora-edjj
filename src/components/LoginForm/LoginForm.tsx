@@ -178,12 +178,12 @@ export default function LoginForm({ isVerified }: { isVerified: boolean }) {
           </Button>
         </form> */}
 
-        <button
+        {/* <button
           className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-md"
           onClick={() => signIn("google")}
         >
           Google
-        </button>
+        </button> */}
 
         <div className="flex items-center justify-between">
           <div className="flex items-center">
