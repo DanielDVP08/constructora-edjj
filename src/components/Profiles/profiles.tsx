@@ -241,9 +241,9 @@ export default function Profiles() {
       {/* User Profiles Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          {/* <h2 className="text-3xl font-bold text-center mb-12">
             Featured Professionals
-          </h2>
+          </h2> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {currentUsers.map((user) => (
               <Card

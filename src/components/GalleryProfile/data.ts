@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 export const generateMembers = (count: number) => {
     const roles = [
@@ -118,3 +118,4 @@ export const generateMembers = (count: number) => {
       description:"Passionate about creating scalable web applications and mentoring junior developers. Always exploring new technologies to improve development processes.",
     }));
   };
+

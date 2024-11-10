@@ -10,11 +10,11 @@ export default function ServicesSection() {
           {/* <img src="https://source.unsplash.com/600x400/?construction" alt="Service 1" className="w-full h-48 object-cover" /> */}
           <div className="p-6">
             <h3 className="text-2xl font-bold mb-2">Perfiles Profesionales</h3>
-            <p className="text-gray-700">
+            {/* <p className="text-gray-700">
               Ofrecemos gestión integral de perfiles profesionales competentes y
               eficaces, seleccionando y administrando el talento adecuado para
-              asegurar el éxito y la eficiencia de cada proyecto
-            </p>
+              assegurar el éxito y la eficiencia de cada proyecto
+            </p> */}
           </div>
         </div>
         {/* Service 2 */}
@@ -24,10 +24,10 @@ export default function ServicesSection() {
             <h3 className="text-2xl font-bold mb-2">
               Venta de Equipo, Maquinarias y/o Materiales
             </h3>
-            <p className="text-gray-700">
+            {/* <p className="text-gray-700">
               Ofrecemos un servicio versátil y confiable de compra de materiales
               y maquinarias, garantizando seguridad y confianza
-            </p>
+            </p> */}
           </div>
         </div>
         {/* Service 3 */}
@@ -35,11 +35,11 @@ export default function ServicesSection() {
           {/* <img src="https://source.unsplash.com/600x400/?landscape" alt="Service 3" className="w-full h-48 object-cover" /> */}
           <div className="p-6">
             <h3 className="text-2xl font-bold mb-2">Proveedores Confiables</h3>
-            <p className="text-gray-700">
+            {/* <p className="text-gray-700">
               Te conectamos con los mejores proveedores de materiales de
               construcción, garantizando calidad, precios competitivos y entrega
               oportuna para que tus proyectos avancen sin contratiempos.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

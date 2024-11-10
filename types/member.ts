@@ -1,0 +1,38 @@
+export type Member = {
+    id: string;
+    profileimage: string | null;
+    firstName: string;
+    lastName: string;
+    documentid: string;
+    phoneNumber: string | null;
+    email: string;
+    education: string | null;
+    career: string | null;
+    university: string | null;
+    codcip: string | null;
+    yearsOfExperience: string | null;
+    skills: string | null;
+    description: string | null;
+    residence: string | null;
+    lastjob: string | null;
+    cv: string | null;
+  }[];
+export type MemberCard = {
+    id: string;
+    profileimage: string | null;
+    firstName: string;
+    lastName: string;
+    documentid: string;
+    phoneNumber: string | null;
+    email: string;
+    education: string | null;
+    career: string | null;
+    university: string | null;
+    codcip: string | null;
+    yearsOfExperience: string | null;
+    skills: string | null;
+    description: string | null;
+    residence: string | null;
+    lastjob: string | null;
+    cv: string | null;
+  };

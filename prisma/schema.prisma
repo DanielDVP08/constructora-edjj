@@ -9,12 +9,59 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Job{
-  id Int @id @default(autoincrement())
-  email String @unique
-  password String @unique
+enum Role{
+  user
+  member
 }
+
+model User{
+  id String @id @default(cuid())
+  username String? @unique
+  email String @unique
+  password String?
+  emailVerified DateTime?
+  image String?
+  role Role @default(user)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+model VerficationToken{
+  identifier String @unique
+  token String
+  expires DateTime
+
+  @@id([identifier]) 
+}
+
+model Member{
+  id String @id @default(cuid())
+  profileimage String?
+  firstName String 
+  lastName String 
+  documentid String @unique
+  phoneNumber String?
+  email String @unique
+  education String?
+  career String?
+  university String?
+  codcip String?
+  yearsOfExperience String?
+  skills String?
+  description String?
+  residence String?
+  lastjob String?
+  cv String?
+
+  suscriptionactived DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
