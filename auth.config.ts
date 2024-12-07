@@ -11,9 +11,30 @@ import { nanoid } from "nanoid";
 import { sendVerificationEmail } from "@/libs/brevo";
 
 // Notice this is only an object, not a full Auth.js instance
+
 export default {
   //   providers: [GitHub],
   providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      authorization:{
+        params:{
+          prompt:"consent",
+          access_type:"offline",
+          response_type:"code",
+        }
+      },
+      profile(profile) {
+        return {
+          id:profile.sub,
+          username: `${profile.given_name} ${profile.family_name}`,
+          email: profile.email,
+          image:profile.picture,
+          role: profile.role ? profile.role : "user",
+        };
+      },
+    }),
     Credentials({
       authorize: async (credentials) => {
         const { data, success } = loginSchema.safeParse(credentials);
@@ -24,7 +45,7 @@ export default {
 
         const user = await db.user.findUnique({
           where: {
-            email: data.email,
+            email: data.email as string,
           },
         });
 
@@ -75,19 +96,6 @@ export default {
           email:user.email,
           image:user.image,
           role:user.role,
-        };
-      },
-    }),
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      profile(profile) {
-        return {
-          id:profile.sub,
-          username: `${profile.given_name} ${profile.family_name}`,
-          email: profile.email,
-          image:profile.picture,
-          role: profile.role ? profile.role : "user",
         };
       },
     }),

@@ -20,7 +20,7 @@ enum Role{
 
 model User{
   id String @id @default(cuid())
-  username String? @unique
+  username String @unique
   email String @unique
   password String?
   emailVerified DateTime?
@@ -58,7 +58,9 @@ model Member{
   residence String?
   lastjob String?
   cv String?
-
+  category String?
+  isWorking Boolean @default(false)
+  
   suscriptionactived DateTime?
 
   createdAt DateTime @default(now())

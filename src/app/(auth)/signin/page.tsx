@@ -1,12 +1,19 @@
-import LoginForm from "@/components/LoginForm/LoginForm";
+import FormSing from "@/components/Auth/FormSinginup/FormSinginup";
+import { auth } from "../../../../auth";
+import { redirect } from "next/navigation";
 
-export default function SingIn({searchParams,}:{searchParams:{verified:string}}){
-  
-  const isVerified=searchParams.verified==="true"
+export default async function SingIn({
+  searchParams,
+}: {
+  searchParams: { verified: string };
+}) {
+  const session = await auth();
 
-  return(
+  const isVerified = searchParams.verified === "true";
+
+  return (
     <>
-      <LoginForm isVerified={isVerified} />
+      {session ? redirect("/") : <FormSing isVerified={isVerified} />}
     </>
-  )
+  );
 }

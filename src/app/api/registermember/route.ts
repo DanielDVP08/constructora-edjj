@@ -104,6 +104,7 @@ export async function POST(request: NextRequest) {
       residence: data.get("location") as string,
       lastjob: data.get("lastJob") as string,
       cv: urlCV,
+      category: data.get("category") as string,
     },
   });
 
@@ -113,6 +114,7 @@ export async function POST(request: NextRequest) {
       email: data.get("email") as string,
     },
     data: {
+      username:data.get("firstName") as string,
       image: urlImage,
       role: "member",
     },

@@ -1,24 +1,16 @@
-import ProfileRegistration from "@/components/RegisterMember/ProbandoV";
+import ProfileRegistration from "@/components/User/RegisterMember/ProfileRegistration";
 import { auth } from "../../../../../auth";
-// import { getUserSession } from "@/libs/session";
-// import RegisterMember from "@/components/RegisterMember/RegisterMember";
-
+import { redirect } from "next/navigation";
 
 export default async function Register() {
-  
   const session = await auth();
 
-  const User = {
-    name: session?.user.name,
-    email: session?.user.email,
-    image: session?.user.image,
-    role: session?.user.role,
-  };
-  
   return (
     <>
-      {/* <RegisterMember/> */}
-      <ProfileRegistration {...User}/>
+      {!session || session.user.role==="member" ? redirect("/") : <ProfileRegistration
+        emailUser={session?.user.email as string}
+        imageUser={session?.user.image as string}
+      />}
     </>
-  )
+  );
 }
