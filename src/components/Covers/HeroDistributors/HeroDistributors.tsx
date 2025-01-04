@@ -1,69 +1,66 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
-  Building2,
-  Truck,
-  Star,
+  // Building2,
+  // Truck,
+  // Star,
   Quote,
   ArrowRight,
 } from "lucide-react";
 import { Button, Card, CardHeader } from "@nextui-org/react";
 import { CldImage } from "next-cloudinary";
 import { useRouter } from "next/navigation";
+// import Image from "next/image";
 
 const stores = [
   {
     id: 1,
     name: "BuildRight Supplies",
-    type: "Store",
-    rating: 4.5,
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1736032961/landscape_qhsjbq.png",
   },
   {
     id: 2,
     name: "ConstructAll Distributors",
-    type: "Distributor",
-    rating: 4.8,
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1736032961/fiabilidad_wasr29.png",
   },
   {
     id: 3,
     name: "MegaBuild Warehouse",
-    type: "Store",
-    rating: 4.2,
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1736032961/variedad_oansh4.png",
   },
   {
     id: 4,
     name: "PremiumMaterials Co.",
-    type: "Distributor",
-    rating: 4.7,
-    image: "/placeholder.svg?height=200&width=300",
+    image:
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1736032961/soste_szhzmc.png",
   },
 ];
 
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Carlos Méndez",
     company: "ABC Construction",
-    text: "The recommendations provided were spot on. We found high-quality materials at great prices!",
+    text: "Como contratista, siempre busco materiales de calidad al mejor precio. Este servicio me ha ahorrado tiempo y dinero, ya que puedo comparar opciones rápidamente y encontrar distribuidores confiables. Es una herramienta esencial para cualquier profesional en el sector.",
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "Andrea Torres",
     company: "Smith Builders",
-    text: "Thanks to these recommendations, we've streamlined our supply chain and improved our project timelines.",
+    text: "Estaba renovando mi casa y no sabía por dónde empezar a buscar materiales. Gracias a este servicio, encontré una tienda cerca de mi domicilio con todo lo que necesitaba y a un precio justo. ¡Fue muy fácil y estoy encantada con los resultados!",
   },
   {
     id: 3,
-    name: "Mike Johnson",
+    name: "Diego Fernández",
     company: "Johnson & Sons",
-    text: "The distributors recommended here are reliable and offer excellent customer service.",
+    text: "Siempre recomiendo este servicio a mis clientes, ya que ofrece opciones personalizadas según sus necesidades y presupuesto. Además, la información es clara y las promociones exclusivas son un gran plus. Realmente marca la diferencia en la planificación de cualquier proyecto.",
   },
 ];
 
@@ -155,38 +152,33 @@ export default function HeroDistributors() {
           <h2 className="text-3xl font-bold text-center mb-10">
             Tiendas y distribuidores destacados
           </h2>
-          <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-            <AnimatePresence>
+          <div className="relative h-96 overflow-hidden rounded-lg shadow-2xl">
+            <AnimatePresence mode="wait">
               <motion.div
                 key={currentBanner}
-                initial={{ opacity: 0, x: 300 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -300 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.2 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white"
+                className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-2">
-                    {stores[currentBanner].name}
-                  </h3>
-                  <p>{stores[currentBanner].type}</p>
-                  <div className="flex justify-center items-center mt-4">
-                    {stores[currentBanner].type === "Store" ? (
-                      <Building2 className="mr-2" />
-                    ) : (
-                      <Truck className="mr-2" />
-                    )}
-                    <span>
-                      {stores[currentBanner].rating}{" "}
-                      <Star className="inline" size={16} />
-                    </span>
-                  </div>
-                  <Button variant="faded" className="bg-white text-blue-500">
-                    Saber mas
-                  </Button>
-                </div>
+                <CldImage
+                  src={stores[currentBanner].image}
+                  alt={stores[currentBanner].name}
+                  // width={120}
+                  // height={42}
+                  fill
+                  priority
+                  crop={{
+                    type: "fit",
+                    source: true,
+                  }}
+                  className="w-full h-full object-cover"
+                />
+                
               </motion.div>
             </AnimatePresence>
+
             <Button
               variant="faded"
               size="sm"
@@ -282,8 +274,6 @@ export default function HeroDistributors() {
           </div>
         </div>
       </section> */}
-
-
     </div>
   );
 }
