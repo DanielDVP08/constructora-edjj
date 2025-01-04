@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button, Card, CardHeader } from "@nextui-org/react";
 import { CldImage } from "next-cloudinary";
+import { useRouter } from "next/navigation";
 
 const stores = [
   {
@@ -68,6 +69,8 @@ const testimonials = [
 
 export default function HeroDistributors() {
   const [currentBanner, setCurrentBanner] = useState(0);
+
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -135,13 +138,13 @@ export default function HeroDistributors() {
               Su puerta de entrada a suministros de calidad y distribuidores
               confiables
             </p>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-colors"
             >
               Explorar Ahora
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </div>
       </section>
@@ -212,9 +215,10 @@ export default function HeroDistributors() {
             <Button
               variant="faded"
               size="lg"
+              onPress={() => router.push("/business")}
               className="bg-blue-500 hover:bg-blue-600 text-white"
             >
-              Ver más tiendas y distribuidores
+              Ver tiendas
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -254,7 +258,7 @@ export default function HeroDistributors() {
       </section>
 
       {/* Section 4: Page Promotion */}
-      <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+      {/* <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">
@@ -277,7 +281,9 @@ export default function HeroDistributors() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+
     </div>
   );
 }

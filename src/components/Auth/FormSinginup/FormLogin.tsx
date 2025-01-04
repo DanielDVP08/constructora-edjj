@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input } from "@nextui-org/react";
+import { Alert, Button, Input } from "@nextui-org/react";
 import { useMemo, useState, useTransition } from "react";
 import { EyeSlashFilledIcon } from "./EyeFilled/EyeSlashFilledIcon";
 import { EyeFilledIcon } from "./EyeFilled/EyeFilledIcon";
@@ -64,6 +64,7 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
     // console.log(res?.error ? res.error : "enviando a home");
 
     // await loginAction(data);
+    
   });
 
   // const onSubmitGoogle = handleSubmit(async () => {
@@ -89,12 +90,13 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
   // });
 
   return (
-    <div className="w-full max-w-md bg-black bg-opacity-75 p-8 rounded-lg">
+    <section className="w-full max-w-md bg-black bg-opacity-75 p-8 rounded-lg">
       <h1 className="text-white text-3xl font-bold mb-8">Iniciar Sesion</h1>
       {isVerified && (
-        <p className="text-green-500 text-sm mt-1 mb-2">
-          Su Cuenta esta verificada
-        </p>
+        // <p className="text-green-500 text-sm mt-1 mb-2">
+        <div className="mt-1 mb-4">
+          <Alert color={"success"} title={`Su Cuenta ha sido verificada`}/>
+        </div>
       )}
       <form onSubmit={onSubmit} className="space-y-6">
         <div>
@@ -215,6 +217,6 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
           .
         </p>
       </div> */}
-    </div>
+    </section>
   );
 }

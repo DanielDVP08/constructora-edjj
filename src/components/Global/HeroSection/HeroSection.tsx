@@ -151,7 +151,7 @@ export default async function HeroSection() {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-wide">
               EXPERTOS EN <span className="text-yellow-400">CONSTRUCCIÓN</span>
             </h1>
-            <div className="border border-white/30 p-6 md:p-8">
+            <div className="border-x-3 border-b-3 border-white p-6 md:p-8">
               <p className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed">
                 Somos una empresa de élite, al mando de un equipo de
                 profesionales especializados y capacitados para resolver

@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   // const data =await request.json()
   // return NextResponse.json(data)
   const data = await request.formData();
-  console.log(data);
+  // console.log(data);
 
   const userEmailFound = await db.member.findUnique({
     where: {
@@ -54,6 +54,8 @@ export async function POST(request: NextRequest) {
   if (!cv) {
     return;
   }
+
+  // const suscriptionactived = data.get("paymentApproved") ? new Date(): null;
 
   // const bytesImage = await image.arrayBuffer();
   // const bufferImage = Buffer.from(bytesImage);
@@ -105,6 +107,7 @@ export async function POST(request: NextRequest) {
       lastjob: data.get("lastJob") as string,
       cv: urlCV,
       category: data.get("category") as string,
+      suscriptionactived: new Date(),
     },
   });
 

@@ -16,6 +16,8 @@ datasource db {
 enum Role{
   user
   member
+  user_business
+  member_business
 }
 
 model User{
@@ -65,5 +67,36 @@ model Member{
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Business{
+  id String @id @default(cuid())
+  useremail String @unique
+  businessname String
+  rucNumber String
+  companyname String
+  businessaddress String?
+  department String?
+  province String?
+  description String?
+  profileimage String?
+  companylogo String?
+  coverimage String?
+  proforma String?
+  whatsapp String?
+  googlemaps String?
+
+  suscriptionactived DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  
+}
+
+model VerficationPayment{
+  identifier String @unique
+  token String
+  expires DateTime
+
+  @@id([identifier]) 
 }
 

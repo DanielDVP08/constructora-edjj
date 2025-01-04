@@ -1,11 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import {
+  ChevronDown,
+  HardHat,
+  Menu,
+  Package,
+  ShoppingBag,
+  Store,
+  X,
+} from "lucide-react";
 // import Image from "next/image";
+// import  from "next/link";
 import { UserDropdown } from "./UserDropdown";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { CldImage } from "next-cloudinary";
 
 interface HeaderProps {
@@ -77,17 +85,16 @@ export default function HeaderNavBar({
                   alt="Logo Constructora"
                 /> */}
 
-                <CldImage 
+                <CldImage
                   alt="Logo Constructora"
                   src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
                   width={120}
                   height={42}
                   crop={{
-                    type: 'fit',
-                    source: true
+                    type: "fit",
+                    source: true,
                   }}
                 />
-
               </Link>
             </div>
           </div>
@@ -97,7 +104,7 @@ export default function HeaderNavBar({
                 <Link
                   href="/"
                   className="hover:text-yellow-500 transition-colors text-white"
-                //   className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium"
+                  //   className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Inicio
                 </Link>
@@ -119,8 +126,8 @@ export default function HeaderNavBar({
                     <button
                       className="text-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
                       onClick={toggleServices}
-                    //   onMouseEnter={() => setIsServicesOpen(true)}
-                    //   onMouseLeave={() => setIsServicesOpen(false)}
+                      //   onMouseEnter={() => setIsServicesOpen(true)}
+                      //   onMouseLeave={() => setIsServicesOpen(false)}
                       aria-expanded={isServicesOpen}
                     >
                       Servicios
@@ -140,31 +147,37 @@ export default function HeaderNavBar({
                         >
                           <Link
                             href="/servicios/products"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                           >
-                            Productos en Venta
+                            <ShoppingBag />{" "}
+                            <span className="ml-2">Productos en Venta</span>
                           </Link>
                           <Link
                             href="/servicios/professionals"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                           >
-                            Profesionales Confiables
+                            <HardHat />
+                            <span className="ml-2">
+                              Profesionales Confiables
+                            </span>
                           </Link>
                           <Link
                             href="/servicios/sales"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                           >
-                            Ventas
+                            <Package />
+                            <span className="ml-2">Ventas</span>
                           </Link>
                           <Link
                             href="/servicios/distributors"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                           >
-                            Distribuidores
+                            <Store />
+                            <span className="ml-2">Distribuidores</span>
                           </Link>
                         </div>
                       </div>
@@ -241,25 +254,25 @@ export default function HeaderNavBar({
                 {isServicesOpen && (
                   <div className="pl-4">
                     <Link
-                      href="/products"
+                      href="/servicios/products"
                       className="block px-3 py-2 rounded-md text-base text-white hover:text-yellow-500"
                     >
                       Productos
                     </Link>
                     <Link
-                      href="/professionals"
+                      href="/servicios/professionals"
                       className="block px-3 py-2 rounded-md text-base text-white hover:text-yellow-500"
                     >
                       Profesionales Confiables
                     </Link>
                     <Link
-                      href="/sales"
+                      href="/servicios/sales"
                       className="block px-3 py-2 rounded-md text-base text-white hover:text-yellow-500"
                     >
                       Ventas
                     </Link>
                     <Link
-                      href="/distributors"
+                      href="/servicios/distributors"
                       className="block px-3 py-2 rounded-md text-base text-white hover:text-yellow-500"
                     >
                       Distribuidores

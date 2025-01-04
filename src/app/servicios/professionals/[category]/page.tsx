@@ -9,11 +9,15 @@ export default async function page({
 }) {
   const categoria = (await params).category;
   const session = await auth();
-  const categorias=["profesional","tecnico","operario"]
+  const categorias = ["profesional", "tecnico", "operario"];
 
   return (
     <>
-      {session && categorias.includes(categoria) ? <GalleryProfile categoria={categoria} /> : redirect("/")}
+      {session && categorias.includes(categoria) ? (
+        <GalleryProfile categoria={categoria} />
+      ) : (
+        redirect("/")
+      )}
     </>
     // <div>{categoria}</div>
   );

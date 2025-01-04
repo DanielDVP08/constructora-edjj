@@ -109,9 +109,9 @@ export default function FormSing({ isVerified }: { isVerified: boolean }) {
                   className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2 py-1 transition duration-300 ease-in-out transform hover:scale-105"
                 >
                   {isLogin ? (
-                    <h3>No tengo una cuenta</h3>
+                    <h3>¿No tienes una cuenta?</h3>
                   ) : (
-                    <h3>Ya tengo una cuenta</h3>
+                    <h3>Ya tienes una cuenta</h3>
                   )}
                 </button>
               </div>

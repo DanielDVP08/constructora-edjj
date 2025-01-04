@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import db from "@/libs/bd";
 import Link from "next/link";
-import { CldImage } from "next-cloudinary";
+import ProfileImage from "./ProfileImage";
+// import { CldImage } from "next-cloudinary";
 
 export default async function ProfileAccount({
   emailUser,
@@ -50,17 +51,7 @@ export default async function ProfileAccount({
                   src="/assets/logojj.png"
                   alt="Company Logo"
                 /> */}
-                <CldImage
-                  alt="Company Logo"
-                  src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
-                  height={150}
-                  width={100}
-                  crop={{
-                    type: "fit",
-                    source: true,
-                  }}
-                  className="h-12 w-auto"
-                />
+                <ProfileImage />
               </div>
             </Link>
           </div>

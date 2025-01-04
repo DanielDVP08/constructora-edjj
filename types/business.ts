@@ -1,0 +1,34 @@
+export type Business = {
+  id: string | null;
+  useremail: string | null;
+  businessname: string | null;
+  rucNumber: string | null;
+  companyname: string | null;
+  businessaddress: string | null;
+  department: string | null;
+  province: string | null;
+  description: string | null;
+  profileimage: string | null;
+  companylogo: string | null;
+  coverimage: string | null;
+  proforma: string | null;
+  whatsapp: string | null;
+  googlemaps: string | null;
+}[];
+export type BusinessCard = {
+  id: string | null;
+  useremail: string | null;
+  businessname: string | null;
+  rucNumber: string | null;
+  companyname: string | null;
+  businessaddress: string | null;
+  department: string | null;
+  province: string | null;
+  description: string | null;
+  profileimage: string | null;
+  companylogo: string | null;
+  coverimage: string | null;
+  proforma: string | null;
+  whatsapp: string | null;
+  googlemaps: string | null;
+};

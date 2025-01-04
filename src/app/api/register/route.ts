@@ -37,11 +37,14 @@ export async function POST(request:NextRequest){
 
     const hashedPassword=await bcrypt.hash(data.password,10)
 
+    const defaultImage="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963765/PLOMO_v8rfuw.png"
+
     const newUser=await db.user.create({
         data:{
             username: data.username,
             email: data.email,
             password: hashedPassword,
+            image: defaultImage,
         }
     })
 

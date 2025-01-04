@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { Input } from "@nextui-org/react";
-import ProfileMember from "./ProfileMemberCard";
+import { Input, Pagination } from "@nextui-org/react";
+// import ProfileMember from "./ProfileMemberCard";
 import { Member } from "../../../../types/member";
 import SmallHeader from "../../Global/Header/SmallHeader";
+// import ProfilesSection from "@/components/RegisterMember/ProfileSection";
+import ProfileMemberCard from "./MemberCard";
+// import ProfileCard from "@/components/RegisterMember/ProfileCard";
 
 export function SearchMember({
   members,
@@ -26,6 +29,7 @@ export function SearchMember({
     (member) =>
       member.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       member.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      member.residence?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       member.career?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       member.yearsOfExperience
         ?.toLowerCase()
@@ -34,6 +38,17 @@ export function SearchMember({
       //   skill.toLowerCase().includes(searchTerm.toLowerCase())
       // ) ||
       member.codcip?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // paginacion
+  const [currentPage, setCurrentPage] = useState(1);
+  const membersPerPage = 8;
+
+  const indexOfLastMember = currentPage * membersPerPage;
+  const indexOfFirstMember = indexOfLastMember - membersPerPage;
+  const currentMembers = filteredMembers.slice(
+    indexOfFirstMember,
+    indexOfLastMember
   );
 
   return (
@@ -68,10 +83,13 @@ export function SearchMember({
             </div>
           </div>
         </section>
+
         <section className="bg-[#020561] px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredMembers.map((member) => (
-              <ProfileMember key={member.id} {...member} />
+            {/* {filteredMembers.map((member) => ( */}
+            {currentMembers.map((member) => (
+              // <ProfileMember key={member.id} {...member} />
+              <ProfileMemberCard key={member.id} {...member} />
             ))}
           </div>
 
@@ -82,12 +100,29 @@ export function SearchMember({
           )}
 
           <br />
-          <div className="mt-8 text-sm text-white text-center">
+          {/* <div className="mt-8 text-sm text-white text-center">
             Vemos {filteredMembers.length} de {members.length} miembros
+          </div> */}
+          <div className="w-full mt-8 px-2 flex justify-center">
+            {filteredMembers.length > 0 && (
+              <Pagination
+                showShadow
+                color="warning"
+                size="lg"
+                showControls
+                initialPage={1}
+                total={Math.ceil(filteredMembers.length / membersPerPage)}
+                // onChange={() => paginate(currentPage + 1)}
+                page={currentPage}
+                onChange={setCurrentPage}
+              />
+            )}
           </div>
           <br />
           <br />
         </section>
+
+        {/* <ProfilesSection/> */}
 
         {isUser && (
           <section className="py-20 bg-gradient-to-r from-black via-orange-500 to-black text-white">

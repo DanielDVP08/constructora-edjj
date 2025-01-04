@@ -1,5 +1,6 @@
 import { auth } from "../../../../auth";
 import HeaderNavBar from "./HeaderNavBar";
+// import { useSession } from "next-auth/react";
 
 export default async function HeaderSection() {
   const session = await auth();

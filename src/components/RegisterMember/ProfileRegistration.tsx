@@ -15,11 +15,12 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { UserDropdown } from "../../Global/Header/UserDropdown";
+import { UserDropdown } from "../Global/Header/UserDropdown";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { departaments, Localidades } from "./data";
+import { CldImage } from "next-cloudinary";
 
 export default function ProfileRegistration({
   emailUser,
@@ -244,7 +245,6 @@ export default function ProfileRegistration({
     }
 
     form.set("image", image);
-    // form.set("profileImage", profileImage);
     form.set("firstName", formData.firstName);
     form.set("lastName", formData.lastName);
     form.set("documentId", formData.documentid);
@@ -273,13 +273,37 @@ export default function ProfileRegistration({
       // }
     });
 
-    const data = await res.json();
-    console.log(data);
+    // const data = await res.json();
+    await res.json();
+    // console.log(data);
 
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
     // Reset form or redirect user after successful submission
 
+    //Actulizar sesion
+
+    // const updatedSession = await update({
+    //   user: {
+    //     name: "Nuevo Nombre",
+    //     email: "nuevo.email@ejemplo.com",
+    //   },
+    // });
+
+    // console.log("si ingresa")
+
+    // const updatedSession = await update({
+    //   user:{
+    //     role:"member"
+    //   }
+    // });
+
+    // console.log("Sesión actualizada:", updatedSession);
+    // console.log(session)
+
+    // console.log("ya paso por aqui")
+    
     router.push("/user/loadingpage");
+    
   };
 
   const pageTitle = [
@@ -291,17 +315,29 @@ export default function ProfileRegistration({
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* navegacion */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <Link href="/">
               <div className="flex-shrink-0">
-                <Image
+                {/* <Image
                   height={150}
                   width={100}
                   className="h-8 w-auto"
                   src="/assets/logojj.png"
                   alt="Company Logo"
+                /> */}
+                <CldImage
+                  alt="Company Logo"
+                  src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
+                  height={150}
+                  width={100}
+                  crop={{
+                    type: "fit",
+                    source: true,
+                  }}
+                  className="h-8 w-auto"
                 />
               </div>
             </Link>
@@ -328,6 +364,7 @@ export default function ProfileRegistration({
             </h3>
           </CardHeader>
           <CardBody>
+            {/* barra */}
             <div className="mb-4">
               <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div
@@ -336,6 +373,7 @@ export default function ProfileRegistration({
                 ></div>
               </div>
             </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {step === 1 && (
                 <>
@@ -750,6 +788,7 @@ export default function ProfileRegistration({
                           Departamento
                         </label>
                         <Select
+                          value={formData.department}
                           onChange={(e) =>
                             handleSelectChange("department", e.target.value)
                           }
@@ -769,6 +808,7 @@ export default function ProfileRegistration({
                           Provincia
                         </label>
                         <Select
+                          value={formData.province}
                           onChange={(e) =>
                             handleSelectChange("province", e.target.value)
                           }

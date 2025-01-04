@@ -9,21 +9,21 @@ const categories = [
     title: "Profesional",
     description: "Explore career opportunities for professionals",
     image:
-      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/categoryprofesional_dmbcno.png",
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963764/BLANCO_b6lqct.png",
     link: "/servicios/professionals/profesional",
   },
   {
     title: "Tecnico",
     description: "Discover technical roles and advancements",
     image:
-      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/categorytecnico_vbtlcr.png",
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963765/NARANJA_kgwkdx.png",
     link: "/servicios/professionals/tecnico",
   },
   {
     title: "Operario",
     description: "Find operator positions and training programs",
     image:
-      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346060/categoryoperario_dzdle4.png",
+      "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963765/AMARILLO_c6ayjk.png",
     link: "/servicios/professionals/operario",
   },
 ];

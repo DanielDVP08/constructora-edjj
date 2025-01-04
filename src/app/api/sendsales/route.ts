@@ -12,6 +12,8 @@ export async function POST(request: NextRequest) {
     data.get("fullName") as string,
     data.get("email") as string,
     data.get("phoneNumber") as string,
+    data.get("ubicacion") as string,
+    data.get("price") as string,
     data.get("description") as string,
     urlImage
   );

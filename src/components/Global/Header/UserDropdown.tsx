@@ -47,16 +47,27 @@ export function UserDropdown({
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="Profile Actions" variant="flat">
-          <DropdownItem key="profile" className="h-14 gap-2">
+          <DropdownItem key="name" className="h-14 gap-2">
             {/* <p className="font-semibold">Signed in as</p> */}
             <p className="font-semibold">{emailUser}</p>
           </DropdownItem>
-          {roleUser === "member" ? (
-            <DropdownItem href="/user/account">Mi perfil</DropdownItem>
+          {roleUser === "member" || roleUser === "member_business" ? (
+            <DropdownItem key="profile" href="/user/account">
+              Mi perfil
+            </DropdownItem>
           ) : (
-            <DropdownItem href="/user/register">
-            Convierte en Miembro
-          </DropdownItem>
+            <DropdownItem key="register" href="/user/register">
+              Convierte en Miembro
+            </DropdownItem>
+          )}
+          {roleUser === "user_business" || roleUser === "member_business" ? (
+            <DropdownItem key="business" href="#">
+              Mi Negocio
+            </DropdownItem>
+          ) : (
+            <DropdownItem key="register_business" href="/business/register">
+              Registra tu Negocio
+            </DropdownItem>
           )}
           {/* <DropdownItem>
             Mi perfil

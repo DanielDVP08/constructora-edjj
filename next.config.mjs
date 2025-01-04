@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/account123/**",
       },
+      {
+        protocol: "https",
+        hostname: "nyc3.digitaloceanspaces.com",
+        port: "",
+        pathname: "/jjconstructorastorage/**",
+      },
     ],
   },
 };

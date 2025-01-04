@@ -111,7 +111,7 @@ export default function ProbandoModal({ member }: { member: MemberCard }) {
                           //   backgroundPosition: "center",
                           // }}
                         >
-                          <h1 className="text-4xl font-bold text-white">
+                          <h1 className="text-4xl font-bold text-gray-800">
                             {member.firstName} {member.lastName}
                           </h1>
                           <p className="text-xl text-gray-400">
@@ -199,7 +199,7 @@ export default function ProbandoModal({ member }: { member: MemberCard }) {
                 <div className="flex justify-center">
                   <Button
                     className="w-full md:w-auto transition-transform hover:scale-105"
-                    onClick={() => window.open(member.cv as string, "_blank")}
+                    onPress={() => window.open(member.cv as string, "_blank")}
                   >
                     <Download className="mr-2 h-4 w-4" /> Download Resume PDF
                   </Button>

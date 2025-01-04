@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { User, Mail, Lock, Cog, Bell, Calendar, FileText} from 'lucide-react'
+// import { updateSession } from '../../../../actions/auth-action'
 
 export default function LoadingPage() {
   const [currentIconIndex, setCurrentIconIndex] = useState(0)
@@ -24,7 +25,8 @@ export default function LoadingPage() {
     }, 500)
 
     const redirectTimeout = setTimeout(() => {
-      router.push('/user/account') // Replace with your destination page
+      // updateSession()
+      router.push('/user/account') // Redirige al perfil
     }, 10000)
 
     return () => {

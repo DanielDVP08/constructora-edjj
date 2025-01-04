@@ -10,11 +10,12 @@ import db from "@/libs/bd";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
   ...authConfig,
-  session: { strategy: "jwt", maxAge: 60*5, },
+  session: { strategy: "jwt", maxAge: 60*20, },
   callbacks: {
     jwt({ token, user }) {
       if (user) {
         // User is available during sign-in
+        token.id = user.id;
         token.role = user.role;
       }
       return token;
