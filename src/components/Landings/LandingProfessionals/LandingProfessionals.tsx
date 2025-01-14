@@ -29,7 +29,6 @@ const categories = [
 ];
 
 export default function LandingProfessionals() {
-  
   return (
     // <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
     //   <div className="max-w-7xl mx-auto">
@@ -74,7 +73,16 @@ export default function LandingProfessionals() {
 
     <>
       {/* <div className="min-h-screen flex items-center justify-center bg-amber-900"> */}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-amber-900 p-4">
+      <div
+        className="min-h-screen flex flex-col items-center justify-center bg-amber-900 p-4"
+        style={{
+          // backgroundImage:
+          //   "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/portadaproducts_fktdpq.png)",
+          backgroundImage: "url(/assets/fondopro2.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
           ¿Qué profesional estás buscando?
         </h1>
@@ -117,12 +125,12 @@ export default function LandingProfessionals() {
                   </div>
                   <h2
                     className="text-2xl font-bold text-amber-900 text-center px-8"
-                    style={{
-                      backgroundImage:
-                        "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346063/titlecategory_sx3a7p.png)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
+                    // style={{
+                    //   backgroundImage:
+                    //     "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346063/titlecategory_sx3a7p.png)",
+                    //   backgroundSize: "cover",
+                    //   backgroundPosition: "center",
+                    // }}
                   >
                     {category.title}
                   </h2>

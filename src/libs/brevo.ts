@@ -1,5 +1,5 @@
 import * as brevo from "@getbrevo/brevo";
-import { templateVerificationEmail } from "./emailTemplate";
+import { templateChangePassword, templateVerificationEmail } from "./emailTemplate";
 
 const apiInstance = new brevo.TransactionalEmailsApi();
 
@@ -66,6 +66,30 @@ export async function sendSaleEmail(
     smtpEmail.attachment = [
       { url: urlImage, name: `ImagenReferencial.${urlImage.split(".").pop()}` },
     ];
+
+    await apiInstance.sendTransacEmail(smtpEmail);
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      error: true,
+    };
+  }
+}
+
+export async function sendCodeConfirmation(email: string, code: string) {
+  const templateEmail = templateChangePassword(code);
+  try {
+    smtpEmail.sender = {
+      name: "JJ Constructora",
+      email: "ontanedaeduardo@gmail.com",
+    };
+    smtpEmail.to = [{ email: email, name: email }];
+    smtpEmail.subject = "Cambiar Contraseña";
+    smtpEmail.htmlContent = templateEmail;
 
     await apiInstance.sendTransacEmail(smtpEmail);
 

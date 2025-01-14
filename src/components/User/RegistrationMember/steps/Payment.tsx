@@ -111,7 +111,7 @@ export default function Payment({ onNext, onPrevious }:PaymentProps) {
           onClick={onPrevious}
           className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
         >
-          Previous
+          Atras
         </button>
         <button
           type="submit"

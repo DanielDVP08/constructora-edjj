@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LogIn } from "lucide-react";
+import { Eye, EyeOff, LogIn } from "lucide-react";
 import { FieldValues } from "react-hook-form";
 import confetti from "canvas-confetti";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import {
 } from "../../../../../actions/auth-action";
 import { AuthError } from "next-auth";
 import { useRouter } from "next/navigation";
+import { CircularProgress } from "@nextui-org/react";
 
 interface LoginProps {
   onPrevious: () => void;
@@ -22,12 +23,14 @@ export default function Login({ onPrevious, data }: LoginProps) {
   const [email, setEmail] = useState(data.email || "");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading,setIsLoading]=useState(false)
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-
+    setIsLoading(true)
     try {
       const res = await updateSession(email, password);
       // const res = await registerVerification(email, password);
@@ -42,8 +45,8 @@ export default function Login({ onPrevious, data }: LoginProps) {
           particleCount: 200,
         });
 
-        console.log("Login submitted", { email, password });
-        console.log("Login submitted", data);
+        // console.log("Login submitted", { email, password });
+        // console.log("Login submitted", data);
       }
     } catch (error) {
       if (error instanceof AuthError) {
@@ -51,12 +54,12 @@ export default function Login({ onPrevious, data }: LoginProps) {
       }
       return { error: "error 500" };
     }
-    
+    setIsLoading(false)
     router.push("/user/loadingpage");
-    
+
     // confetti({
-      //   shapes: ["square"],
-      //   origin: { x: 0.5, y: 0.8 },
+    //   shapes: ["square"],
+    //   origin: { x: 0.5, y: 0.8 },
     //   particleCount: 200,
     // });
 
@@ -97,20 +100,42 @@ export default function Login({ onPrevious, data }: LoginProps) {
           disabled
           // required
         />
-        <input
+        {/* <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 border rounded"
           required
-        />
+        /> */}
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2 border rounded pr-10"
+            required
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-2 top-2 text-gray-500"
+          >
+            {showPassword ? (
+              <EyeOff className="w-6 h-6" />
+            ) : (
+              <Eye className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
         {error && (
           <p className="text-orange-500 text-sm mt-1">
-            El correo electronico o la constraseña son incorrectas. Verifique
-            los datos
+            La Contraseña es incorrecta
           </p>
         )}
+
       </div>
       <div className="flex justify-between">
         <button
@@ -118,14 +143,14 @@ export default function Login({ onPrevious, data }: LoginProps) {
           onClick={onPrevious}
           className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
         >
-          Previous
+          Atras
         </button>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-600"
           disabled={!email || !password}
         >
-          Login
+          {isLoading ? (<CircularProgress aria-label="Loading..." color="success" size="sm"/>) : "Confirmar"}
         </button>
       </div>
     </form>

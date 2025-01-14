@@ -68,6 +68,7 @@ export async function registerMember(data: FieldValues) {
   form.set("resume", data.resume);
   form.set("category", category);
   form.set("paymentApproved", data.paymentApproved);
+  form.set("role", data.role);
 
   await fetch("/api/registermember", {
     method: "POST",
@@ -75,6 +76,29 @@ export async function registerMember(data: FieldValues) {
   });
 
   // await res.json();
+}
+
+export async function updateMember(data: FieldValues) {
+  const form = new FormData();
+
+  form.set("email", data.email);
+  form.set("profileImage", data.profileimage);
+  form.set("newProfileImage", data.newProfileImage);
+  form.set("isWorking", data.isWorking);
+  form.set("phoneNumber", data.phoneNumber);
+  form.set("description", data.description);
+  form.set("education", data.education);
+  form.set("career", data.career);
+  form.set("university", data.university);
+  form.set("lastJob", data.lastjob);
+  form.set("skills", data.skills);
+  form.set("resume", data.cv);
+  form.set("newCV", data.newCV);
+
+  await fetch("/api/updatemember", {
+    method: "POST",
+    body: form,
+  });
 }
 
 export async function registerVerification(email: string, password: string) {
@@ -104,12 +128,18 @@ export async function registerBusiness(data: FieldValues) {
 
   form.set("email", data.userEmail);
   form.set("role", data.roleUser);
-  form.set("businessName", data.businessName);
+  form.set(
+    "businessName",
+    (data.businessName as string).trim().replaceAll(" ", "_")
+  );
   form.set("rucNumber", data.rucNumber);
   form.set("companyName", data.companyName);
   form.set("businessAddress", data.businessAddress);
   // form.set("residence", `${data.department},${data.province}`);
-  form.set("department", data.department);
+  form.set(
+    "department",
+    (data.department as string).trim().replaceAll(" ", "_")
+  );
   form.set("province", data.province);
   form.set("description", data.description);
   form.set("profileImage", data.profileImage);
@@ -124,5 +154,70 @@ export async function registerBusiness(data: FieldValues) {
     method: "POST",
     body: form,
   });
-  console.log("se registro");
+  // console.log("se registro");
+}
+
+export async function updateBusiness(data: FieldValues) {
+  const form = new FormData();
+
+  form.set("email", data.useremail);
+
+  form.set("coverImage", data.coverimage);
+  form.set("newCoverImage", data.newCoverImage);
+
+  form.set("profileimage", data.profileimage);
+  form.set("newProfileImage", data.newProfileImage);
+  
+  form.set("logoImage", data.companylogo);
+  form.set("newLogoImage", data.newLogo);
+
+  form.set("description", data.description);
+  form.set("address", data.businessaddress);
+  form.set("whatsappLink", data.whatsapp);
+  form.set("googleMapsLink", data.googlemaps);
+
+  form.set("proforma", data.proforma);
+  form.set("newProforma", data.newProforma);
+
+  await fetch("/api/updatebusiness", {
+    method: "POST",
+    body: form,
+  });
+}
+
+export async function isValidPass(pass: string, userpass: string) {
+  const isValid = await bcrypt.compare(pass, userpass);
+  return isValid;
+}
+
+export async function sendCodeChangePass(email: string, code: string) {
+  const form = new FormData();
+
+  form.set("email", email);  
+  form.set("code", code);
+
+  await fetch("/api/sendcode", {
+    method: "POST",
+    body: form,
+  });
+
+  // await sendCodeConfirmation(email, code);
+}
+
+export async function changePass(pass: string, email: string) {
+  const form = new FormData();
+
+  form.set("email", email);  
+  form.set("password", pass);
+
+  await fetch("/api/changepass", {
+    method: "POST",
+    body: form,
+  });
+}
+
+export async function cerrarSession() {
+  await signOut({
+    redirectTo: "/signin",
+  });
 }

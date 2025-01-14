@@ -52,7 +52,7 @@ export function UserDropdown({
             <p className="font-semibold">{emailUser}</p>
           </DropdownItem>
           {roleUser === "member" || roleUser === "member_business" ? (
-            <DropdownItem key="profile" href="/user/account">
+            <DropdownItem key="profile" href="/user/dashboard">
               Mi perfil
             </DropdownItem>
           ) : (
@@ -61,7 +61,7 @@ export function UserDropdown({
             </DropdownItem>
           )}
           {roleUser === "user_business" || roleUser === "member_business" ? (
-            <DropdownItem key="business" href="#">
+            <DropdownItem key="business" href="/business/dashboard">
               Mi Negocio
             </DropdownItem>
           ) : (
@@ -69,6 +69,9 @@ export function UserDropdown({
               Registra tu Negocio
             </DropdownItem>
           )}
+          <DropdownItem key="change_pass" href="/user/changepass">
+            Cambiar Contraseña
+          </DropdownItem>
           {/* <DropdownItem>
             Mi perfil
           </DropdownItem> */}
@@ -79,7 +82,7 @@ export function UserDropdown({
           <DropdownItem key="configurations">Configurations</DropdownItem>
           <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem> */}
           <DropdownItem key="logout" color="danger" onClick={handleClick}>
-            Log Out
+            Cerrar Sesion
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

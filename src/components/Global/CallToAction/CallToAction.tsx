@@ -81,7 +81,7 @@ export default function CallToAction() {
                   href="/business/register"
                   className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-black/90 transition-colors"
                 >
-                  Accede a nuestros servicios
+                  Registrate como Distribuidor
                 </Link>
 
                 {/* <div>

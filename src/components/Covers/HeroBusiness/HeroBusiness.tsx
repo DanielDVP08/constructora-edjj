@@ -43,7 +43,7 @@ export default function HeroBusiness() {
           ))}
         </select>
         <button
-          onClick={() => router.push(`/business/${selectedDepartment}`)}
+          onClick={() => router.push(`/business/${(selectedDepartment).trim().replaceAll(" ","_")}`)}
           disabled={!selectedDepartment}
           className="w-full bg-blue-600 text-white p-2 rounded flex items-center justify-center disabled:bg-gray-600 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors duration-200"
         >

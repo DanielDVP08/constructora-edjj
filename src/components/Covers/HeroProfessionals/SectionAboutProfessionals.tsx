@@ -8,19 +8,19 @@ export default function SectionAboutProfessionals() {
       icon: <UserCheck className="h-12 w-12 text-blue-600" />,
       title: "Analisis de Perfiles",
       description:
-        "Our experts analyze your profile to identify areas for improvement.",
+        "Evaluamos a fondo cada detalle para garantizar talento y soluciones que se ajusten a tus necesidades.",
     },
     {
       icon: <TrendingUp className="h-12 w-12 text-blue-600" />,
       title: "Seguridad de Informacion",
       description:
-        "Get valuable insights on industry trends and best practices.",
+        "Protegemos tus datos con sistemas robustos y confiables, porque tu tranquilidad es nuestra prioridad.",
     },
     {
       icon: <Award className="h-12 w-12 text-blue-600" />,
       title: "Recomendaciones Certeras",
       description:
-        "Receive tailored recommendations to enhance your professional presence.",
+        "Ofrecemos sugerencias personalizadas y precisas, respaldadas por experiencia y conocimiento.",
     },
   ];
 

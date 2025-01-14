@@ -75,7 +75,7 @@ export default function DashboardBusiness({ busines }: DashboardBusinessProps) {
                   width={64}
                   height={64}
                 />
-                <h4 className="text-3xl font-bold">{busines.businessname}</h4>
+                <h4 className="text-3xl font-bold">{(busines.businessname as string).replaceAll("_"," ")}</h4>
               </div>
               <p className="text-gray-600">{busines.description}</p>
             </div>
@@ -93,7 +93,7 @@ export default function DashboardBusiness({ busines }: DashboardBusinessProps) {
                 </li>
                 <li>
                   <strong>Ubicacion: </strong>{" "}
-                  {`${busines.department}, ${busines.province}`}
+                  {`${(busines.department as string).replaceAll("_"," ")}, ${busines.province}`}
                 </li>
                 <li>
                   <strong>Google Maps: </strong>

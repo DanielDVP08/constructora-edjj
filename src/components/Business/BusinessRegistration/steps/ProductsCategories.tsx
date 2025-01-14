@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-import { Package, Upload, X } from "lucide-react";
+import { ImageUp, Upload, X } from "lucide-react";
 import { FieldValues } from "react-hook-form";
 // import { Select, SelectItem } from "@nextui-org/react";
 // import ImageUpload from "../ImageUpload";
@@ -26,7 +26,6 @@ export default function ProductsCategories({
   onPrevious,
   data,
 }: ProductsCategoriesProps) {
-
   // const [categories, setCategories] = useState<Category>(
   //   data.productCategories || []
   // );
@@ -55,13 +54,12 @@ export default function ProductsCategories({
   // };
 
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.files) {
-        return;
-      }
-      const file = e.target.files[0];
-      setCompanyLogo(file);
-  
-    };
+    if (!e.target.files) {
+      return;
+    }
+    const file = e.target.files[0];
+    setCompanyLogo(file);
+  };
 
   const handleProformaUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -79,45 +77,42 @@ export default function ProductsCategories({
   return (
     <div className="max-w-2xl mx-auto">
       <div className="flex items-center mb-6">
-        <Package className="w-8 h-8 mr-2" />
-        <h2 className="text-2xl font-bold">Categorias de Productos</h2>
+        <ImageUp className="w-8 h-8 mr-2" />
+        <h2 className="text-2xl font-bold">Logo y Proforma</h2>
       </div>
       <form onSubmit={handleSubmit} className="space-y-6">
-        
         <div>
-          <h3 className="text-lg font-semibold mb-2">Company Logo</h3>
+          <h3 className="text-lg font-semibold mb-2">Logo de la Compañia</h3>
           {companyLogo ? (
-              <div className="relative">
-                {/* <img src={profileImage} alt="Profile" className="w-full h-64 object-cover rounded-lg" /> */}
-                <Image
-                  src={URL.createObjectURL(companyLogo)}
-                  alt="Profile Preview"
-                  height={150}
-                  width={100}
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-                <button
-                  type="button"
-                  onClick={() => setCompanyLogo(null)}
-                  className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            ) : (
-              <label className="w-full h-64 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
-                <Upload className="w-12 h-12 text-gray-400" />
-                <span className="mt-2 text-sm text-gray-500">
-                  Subir Logo
-                </span>
-                <input
-                  type="file"
-                  className="hidden"
-                  onChange={handleImageUpload}
-                  accept="image/*"
-                />
-              </label>
-            )}
+            <div className="relative">
+              {/* <img src={profileImage} alt="Profile" className="w-full h-64 object-cover rounded-lg" /> */}
+              <Image
+                src={URL.createObjectURL(companyLogo)}
+                alt="Profile Preview"
+                height={150}
+                width={100}
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <button
+                type="button"
+                onClick={() => setCompanyLogo(null)}
+                className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <label className="w-full h-64 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+              <Upload className="w-12 h-12 text-gray-400" />
+              <span className="mt-2 text-sm text-gray-500">Subir Logo</span>
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleImageUpload}
+                accept="image/*"
+              />
+            </label>
+          )}
         </div>
 
         <div>
@@ -140,6 +135,7 @@ export default function ProductsCategories({
                 file:text-sm file:font-semibold
                 file:bg-blue-50 file:text-blue-700
                 hover:file:bg-blue-100"
+              required
             />
           )}
         </div>

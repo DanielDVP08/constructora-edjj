@@ -69,4 +69,69 @@ export function templateVerificationEmail(linkVerification: string) {
 </html>`;
 }
 
+export function templateChangePassword(code: string) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmacion de Cambio de Constraseña</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333; margin: 0; padding: 0;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 0;">
+                <table role="presentation" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 20px;">
+                    <tr>
+                        <td align="center" style="padding: 40px 0 30px 0; background-color: #70bbd9;">
+                            <img src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png" alt="Company Logo" width="300" style="height: auto; display: block;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 40px 30px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                            <h1 style="color: #333333; font-size: 24px; margin-bottom: 20px;">Confirmacion de Cambio de Constraseña</h1>
+                            <p style="margin-bottom: 20px;">Hemos recibido una solicitud para cambiar su contraseña. Para completar este proceso, utilice el siguiente código de confirmación:</p>
+                            <p style="font-size: 32px; font-weight: bold; color: #007bff; text-align: center; margin: 30px 0; letter-spacing: 5px;">${code}</p>
+                            <p style="margin-bottom: 20px;">Si no solicitó un cambio de contraseña, ignore este correo electrónico o comuníquese con nuestro equipo de soporte de inmediato..</p>
+                            <p style="margin-bottom: 20px;">Este código caducará en 15 minutos por razones de seguridad.</p>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 30px; background-color: #ee4c50;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; border: 0; border-spacing: 0; font-size: 9px; font-family: Arial, sans-serif;">
+                                <tr>
+                                    <td style="padding: 0; width: 50%;" align="left">
+                                        <p style="margin: 0; font-size: 14px; line-height: 16px; font-family: Arial, sans-serif; color: #ffffff;">
+                                            &reg; JJ Constructora, 2023<br/>
+                                        </p>
+                                    </td>
+                                    <td style="padding: 0; width: 50%;" align="right">
+                                        <table role="presentation" style="border-collapse: collapse; border: 0; border-spacing: 0;">
+                                            <tr>
+                                                <td style="padding: 0 0 0 10px; width: 38px;">
+                                                    <a href="http://www.twitter.com/" style="color: #ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height: auto; display: block; border: 0;" /></a>
+                                                    </td>
+                                                <td style="padding: 0 0 0 10px; width: 38px;">
+                                                    <a href="http://www.facebook.com/" style="color: #ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height: auto; display: block; border: 0;" /></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
 
+1234
+
+56
+
+`;
+}

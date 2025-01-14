@@ -45,6 +45,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const role = data.get("role") as string;
+
   const image = data.get("image") as File;
   const cv = data.get("resume") as File;
 
@@ -60,7 +62,7 @@ export async function POST(request: NextRequest) {
   // const bytesImage = await image.arrayBuffer();
   // const bufferImage = Buffer.from(bytesImage);
   // const fileExtensionImage = image.name.split(".").pop();
-  
+
   // const bytesCV = await cv.arrayBuffer();
   // const bufferCV = Buffer.from(bytesCV);
   // const fileExtensionCV = cv.name.split(".").pop();
@@ -85,8 +87,8 @@ export async function POST(request: NextRequest) {
   // const urlImage=`${endpoint}/${bucketParamsImage.Bucket}/${bucketParamsImage.Key}`
   // const urlCV=`${endpoint}/${bucketParamsCV.Bucket}/${bucketParamsCV.Key}`
 
-  const urlImage=await getUrlFile(image)
-  const urlCV= await getUrlFile(cv)
+  const urlImage = await getUrlFile(image);
+  const urlCV = await getUrlFile(cv);
 
   const newMember = await db.member.create({
     data: {
@@ -107,23 +109,46 @@ export async function POST(request: NextRequest) {
       lastjob: data.get("lastJob") as string,
       cv: urlCV,
       category: data.get("category") as string,
-      suscriptionactived: new Date(),
+      suscriptionactived: new Date(Date.now()),
     },
   });
 
+  // const updated = await db.user.update({
+  //   where: {
+  //     email: data.get("email") as string,
+  //   },
+  //   data: {
+  //     username: data.get("firstName") as string,
+  //     image: urlImage,
+  //     role: "member",
+  //   },
+  // });
 
-  const updated=await db.user.update({
-    where: {
-      email: data.get("email") as string,
-    },
-    data: {
-      username:data.get("firstName") as string,
-      image: urlImage,
-      role: "member",
-    },
-  });
+  if (role === "user") {
+    await db.user.update({
+      where: {
+        email: data.get("email") as string,
+      },
+      data: {
+        username: data.get("firstName") as string,
+        image: urlImage,
+        role: "member",
+      },
+    });
+  } else {
+    await db.user.update({
+      where: {
+        email: data.get("email") as string,
+      },
+      data: {
+        username: data.get("firstName") as string,
+        image: urlImage,
+        role: "member_business",
+      },
+    });
+  }
 
-console.log(updated) 
+  // console.log(updated);
 
   return NextResponse.json(newMember);
 

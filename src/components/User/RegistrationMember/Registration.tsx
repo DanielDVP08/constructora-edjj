@@ -26,12 +26,14 @@ const steps = [
 export default function Registration({
   emailUser,
   imageUser,
+  roleUser,
 }: {
   emailUser: string;
   imageUser: string;
+  roleUser: string;
 }) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ role: roleUser });
 
   const handleNext = (data: FieldValues) => {
     setFormData({ ...formData, ...data });
@@ -123,7 +125,7 @@ export default function Registration({
               <UserDropdown
                 emailUser={emailUser}
                 imageUser={imageUser}
-                roleUser="user"
+                roleUser={roleUser}
               />
             </div>
           </div>

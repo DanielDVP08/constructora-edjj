@@ -89,7 +89,7 @@ export default function HeroProfessionals() {
               size="lg"
               color="warning"
               className="text-lg"
-              onClick={() => redirect("/signin")}
+              onPress={() => redirect("/signin")}
             >
               Explora nuestros Talentos
             </Button>

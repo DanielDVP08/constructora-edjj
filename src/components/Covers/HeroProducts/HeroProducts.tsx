@@ -1,8 +1,20 @@
 "use client";
 
-import { Button, Card, CardBody, Chip, Pagination } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Chip,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  Pagination,
+  useDisclosure,
+} from "@nextui-org/react";
 import { MessageCircleMore } from "lucide-react";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
+// import Image from "next/image";
 import { useState } from "react";
 
 const products = [
@@ -191,6 +203,8 @@ const products = [
 export default function HeroProducts() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   // paginacion
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
@@ -216,9 +230,9 @@ export default function HeroProducts() {
           <section
             className="flex overflow-hidden bg-black py-16 object-fill"
             style={{
-              backgroundImage:
-                "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/portadaproducts_fktdpq.png)",
-              // backgroundImage: "url(/assets/portadaproducts.png)",
+              // backgroundImage:
+              //   "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/portadaproducts_fktdpq.png)",
+              backgroundImage: "url(/assets/productos3.jpg)",
               // backgroundImage: "https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/portadaproducts_fktdpq.png",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -237,7 +251,9 @@ export default function HeroProducts() {
                 </p>
               </div>
             </div> */}
-            <div className="container mx-auto px-4 text-center">
+            <div
+              className="container mx-auto px-4 text-center mt-2"
+            >
               <h1 className="mb-6 text-4xl font-bold text-yellow-500 md:text-6xl">
                 DIVERSOS
                 <span className="block text-white">PRODUCTOS</span>
@@ -296,7 +312,7 @@ export default function HeroProducts() {
                               <p>Disponible: </p>
                               {product.saleStatus && (
                                 // <span className="text-green-500">Venta</span>
-                                <Chip size="sm" color="success" variant="solid">
+                                <Chip size="sm" color="success" variant="dot">
                                   Venta
                                 </Chip>
                               )}
@@ -305,7 +321,7 @@ export default function HeroProducts() {
                               )}
                               {product.rentalStatus && (
                                 // <span className="text-blue-500">Alquiler</span>
-                                <Chip size="sm" color="success" variant="solid">
+                                <Chip size="sm" color="success" variant="dot">
                                   Alquiler
                                 </Chip>
                               )}
@@ -338,16 +354,75 @@ export default function HeroProducts() {
                             )}
                           </div>
 
-                          <div className="w-1/3">
-                            <Image
-                              src="/placeholder.svg?height=100&width=100"
+                          <div className="w-1/3" onClick={onOpen}>
+                            {/* <Image
+                              src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/herojj_m15yfk.jpg"
                               alt={product.name}
                               width={100}
                               height={100}
                               //   className="rounded-md object-cover"
                               className="aspect-square overflow-hidden rounded-lg bg-black"
+                            /> */}
+                            <CldImage
+                              alt="Fondo"
+                              src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/herojj_m15yfk.jpg"
+                              // width={120}
+                              // height={42}
+                              width={100}
+                              height={100}
+                              priority
+                              crop={{
+                                type: "fit",
+                                source: true,
+                              }}
+                              className="aspect-square overflow-hidden rounded-lg bg-black"
                             />
                           </div>
+
+                          <Modal
+                            backdrop="transparent"
+                            isOpen={isOpen}
+                            onOpenChange={onOpenChange}
+                          >
+                            <ModalContent>
+                              {(onClose) => (
+                                <>
+                                  <ModalBody>
+                                    {/* <Image
+                                      src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/herojj_m15yfk.jpg"
+                                      alt={product.name}
+                                      width={400}
+                                      height={400}
+                                      className="w-full h-auto rounded-md object-cover"
+                                    /> */}
+                                    <CldImage
+                                      alt="Fondo"
+                                      src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346061/herojj_m15yfk.jpg"
+                                      // width={120}
+                                      // height={42}
+                                      width={400}
+                                      height={400}
+                                      priority
+                                      crop={{
+                                        type: "fit",
+                                        source: true,
+                                      }}
+                                      className="aspect-square overflow-hidden rounded-lg bg-black"
+                                    />
+                                  </ModalBody>
+                                  <ModalFooter>
+                                    <Button
+                                      color="danger"
+                                      variant="light"
+                                      onPress={onClose}
+                                    >
+                                      Close
+                                    </Button>
+                                  </ModalFooter>
+                                </>
+                              )}
+                            </ModalContent>
+                          </Modal>
                         </div>
                       </CardBody>
                     </Card>

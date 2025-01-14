@@ -36,7 +36,6 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
 
     try {
       startTransition(async () => {
@@ -44,13 +43,11 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
           email: data.email,
           password: data.password,
           redirect: false,
-          // redirectTo: "/dashboard",
         });
         if (res?.error) {
           setError(res.error);
         } else {
           router.push("/");
-          // redirect("/")
         }
       });
       return { success: true };

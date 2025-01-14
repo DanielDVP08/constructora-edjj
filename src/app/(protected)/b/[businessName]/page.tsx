@@ -1,4 +1,3 @@
-
 import { redirect } from "next/navigation";
 import db from "@/libs/bd";
 import DashboardBusiness from "@/components/Business/DashBoardBusiness/DashboardBusiness";
@@ -20,11 +19,7 @@ export default async function page({
   return (
     <>
       <HeaderSection />
-      {business ? (
-        <DashboardBusiness busines={business} />
-      ) : (
-        redirect("/")
-      )}
+      {business ? <DashboardBusiness busines={business} /> : redirect("/")}
     </>
   );
 }

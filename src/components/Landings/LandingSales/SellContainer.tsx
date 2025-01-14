@@ -49,7 +49,7 @@ export function SellContainer({
         </div>
       </div>
       <h2
-        className="text-xl font-semibold text-center text-brown-800 bg-amber-500 px-8 py-2 rounded-lg"
+        className="text-xl font-semibold text-center text-white bg-amber-500 px-8 py-2 rounded-lg"
         // style={{
         //   backgroundImage:
         //     "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346063/titlecategory_sx3a7p.png)",

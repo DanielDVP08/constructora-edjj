@@ -13,7 +13,7 @@ export default async function page({
   return (
     <>
       <HeaderSection />
-      {departaments.includes(departament) ? (
+      {departaments.includes(departament.replaceAll("_"," ")) ? (
         <GalleryBussiness departament={departament} />
       ) : (
         redirect("/")

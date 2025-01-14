@@ -7,12 +7,15 @@ export default async function Register() {
 
   return (
     <>
-      {!session || session.user.role === "member" ? (
+      {!session ||
+      session.user.role === "member" ||
+      session.user.role === "member_business" ? (
         redirect("/")
       ) : (
         <Registration
           emailUser={session?.user.email as string}
           imageUser={session?.user.image as string}
+          roleUser={session?.user.role as string}
         />
       )}
     </>

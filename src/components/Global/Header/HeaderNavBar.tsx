@@ -87,7 +87,8 @@ export default function HeaderNavBar({
 
                 <CldImage
                   alt="Logo Constructora"
-                  src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
+                  // src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
+                  src="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1736817428/LOGOBLANCO_t8sl2i.png"
                   width={120}
                   height={42}
                   crop={{
@@ -172,7 +173,7 @@ export default function HeaderNavBar({
                             <span className="ml-2">Ventas</span>
                           </Link>
                           <Link
-                            href="/servicios/distributors"
+                            href="/business"
                             className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                           >
@@ -272,7 +273,7 @@ export default function HeaderNavBar({
                       Ventas
                     </Link>
                     <Link
-                      href="/servicios/distributors"
+                      href="/business"
                       className="block px-3 py-2 rounded-md text-base text-white hover:text-yellow-500"
                     >
                       Distribuidores

@@ -74,7 +74,7 @@ export default function GalleryPhotos() {
                 {item.title}
               </h2>
               <p className="text-sm text-muted-foreground text-center">
-                {item.images.length} images
+                {item.images.length} imagenes
               </p>
             </div>
           ))}

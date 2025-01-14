@@ -45,13 +45,13 @@ export default function HeroProjects() {
             <p className="text-xl md:text-2xl mb-8">
               Transformando visiones en estructuras impresionantes
             </p>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-colors"
             >
               Explora Nuestros Proyectos
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default function HeroProjects() {
       <GalleryPhotos />
 
       {/* Descripcion */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export default function HeroProjects() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

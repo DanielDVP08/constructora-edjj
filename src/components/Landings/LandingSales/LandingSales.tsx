@@ -32,14 +32,15 @@ export default function LandingSales({
     <section
       className="min-h-screen bg-brown-100 flex flex-col items-center justify-center p-4 md:p-8"
       style={{
-        backgroundImage:
-          "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963871/ofertas_ntijyt.jpg)",
+        // backgroundImage:
+        //   "url(https://res.cloudinary.com/dqpc8hl3r/image/upload/v1735963871/ofertas_ntijyt.jpg)",
+        backgroundImage: "url(/assets/fondopro3.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <h1 className="text-2xl md:text-4xl font-bold text-brown-400 text-center mb-8 bg-white px-16 py-4">
-        ¿Que ofreces?
+      <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-8">
+        ¿Que te gustaria ofrecer?
       </h1>
       <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0 mt-12 w-full max-w-4xl">
         {items.map((item, index) => (
