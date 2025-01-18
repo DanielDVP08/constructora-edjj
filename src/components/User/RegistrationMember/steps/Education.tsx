@@ -73,8 +73,24 @@ export default function Education({
         {(education === "Bachiller" ||
           education === "Maestria" ||
           education === "Doctorado") && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* <select
+          <>
+            <div className="space-y-2">
+              <Select
+                value={university}
+                radius="none"
+                onChange={(e) => setUniversity(e.target.value)}
+                placeholder="Seleccione una universidad"
+                className="w-full p-2 border rounded"
+              >
+                {universidades_peru.map((universidad) => (
+                  <SelectItem key={universidad} value={universidad}>
+                    {universidad}
+                  </SelectItem>
+                ))}
+              </Select>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* <select
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
               className="w-full p-2 border rounded"
@@ -98,35 +114,21 @@ export default function Education({
               ))}
             </select> */}
 
-            <Select
-              value={degree}
-              radius="none"
-              onChange={(e) => setDegree(e.target.value)}
-              placeholder="Seleccione una carrera"
-              className="w-full p-2 border rounded"
-            >
-              {carreras_profesionales_peru.map((carrera) => (
-                <SelectItem key={carrera} value={carrera}>
-                  {carrera}
-                </SelectItem>
-              ))}
-            </Select>
+              <Select
+                value={degree}
+                radius="none"
+                onChange={(e) => setDegree(e.target.value)}
+                placeholder="Seleccione una carrera"
+                className="w-full p-2 border rounded"
+              >
+                {carreras_profesionales_peru.map((carrera) => (
+                  <SelectItem key={carrera} value={carrera}>
+                    {carrera}
+                  </SelectItem>
+                ))}
+              </Select>
 
-            <Select
-              value={university}
-              radius="none"
-              onChange={(e) => setUniversity(e.target.value)}
-              placeholder="Seleccione una universidad"
-              className="w-full p-2 border rounded"
-            >
-              {universidades_peru.map((universidad) => (
-                <SelectItem key={universidad} value={universidad}>
-                  {universidad}
-                </SelectItem>
-              ))}
-            </Select>
-
-            {/* <input
+              {/* <input
               type="text"
               placeholder="Carrera"
               value={degree}
@@ -142,15 +144,16 @@ export default function Education({
               className="w-full p-2 border rounded"
               required
             /> */}
-            <input
-              type="text"
-              placeholder="Codigo CIP (opcional)"
-              value={cipCode}
-              onChange={(e) => setCipCode(e.target.value)}
-              className="w-full p-2 border rounded"
-              // required
-            />
-          </div>
+              <input
+                type="text"
+                placeholder="Codigo CIP (opcional)"
+                value={cipCode}
+                onChange={(e) => setCipCode(e.target.value)}
+                className="w-full p-2 border rounded"
+                // required
+              />
+            </div>
+          </>
         )}
         <div className="flex items-center space-x-2">
           <input

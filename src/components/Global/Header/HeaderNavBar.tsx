@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import {
-  ChevronDown,
-  HardHat,
+  // ChevronDown,
+  // HardHat,
+  // Package,
+  // ShoppingBag,
+  // Store,
   Menu,
-  Package,
-  ShoppingBag,
-  Store,
   X,
 } from "lucide-react";
 // import Image from "next/image";
@@ -31,7 +31,7 @@ export default function HeaderNavBar({
 }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  // const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -44,9 +44,9 @@ export default function HeaderNavBar({
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  const toggleServices = () => {
-    setIsServicesOpen(!isServicesOpen);
-  };
+  // const toggleServices = () => {
+  //   setIsServicesOpen(!isServicesOpen);
+  // };
 
   // const logo="https://res.cloudinary.com/dqpc8hl3r/image/upload/v1733346062/logojj_ou1syp.png"
 
@@ -122,7 +122,7 @@ export default function HeaderNavBar({
                   Proyectos
                 </Link>
 
-                {isLoggedIn ? (
+                {/* {isLoggedIn ? (
                   <div className="relative group">
                     <button
                       className="text-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
@@ -191,7 +191,13 @@ export default function HeaderNavBar({
                   >
                     Servicios
                   </Link>
-                )}
+                )} */}
+                <Link
+                  href="/servicios"
+                  className="hover:text-yellow-500 transition-colors text-white"
+                >
+                  Servicios
+                </Link>
               </div>
             </div>
           )}
@@ -238,7 +244,7 @@ export default function HeaderNavBar({
               Proyectos
             </Link>
 
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
               <div className="relative">
                 <button
                   className="text-white hover:text-yellow-500 block px-3 py-2 rounded-md text-base w-full text-left flex justify-between items-center"
@@ -288,7 +294,13 @@ export default function HeaderNavBar({
               >
                 Servicios
               </Link>
-            )}
+            )} */}
+            <Link
+              href="/servicios"
+              className="text-white hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Servicios
+            </Link>
           </div>
         </div>
       )}

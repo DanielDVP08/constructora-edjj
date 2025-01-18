@@ -11,6 +11,7 @@ import { loginSchema } from "@/libs/zod";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { AuthError } from "next-auth";
+import Link from "next/link";
 
 export default function FormLogin({ isVerified }: { isVerified: boolean }) {
   const [value, setValue] = useState("");
@@ -36,7 +37,6 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = handleSubmit(async (data) => {
-
     try {
       startTransition(async () => {
         const res = await signIn("credentials", {
@@ -61,7 +61,6 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
     // console.log(res?.error ? res.error : "enviando a home");
 
     // await loginAction(data);
-    
   });
 
   // const onSubmitGoogle = handleSubmit(async () => {
@@ -92,7 +91,7 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
       {isVerified && (
         // <p className="text-green-500 text-sm mt-1 mb-2">
         <div className="mt-1 mb-4">
-          <Alert color={"success"} title={`Su Cuenta ha sido verificada`}/>
+          <Alert color={"success"} title={`Su Cuenta ha sido verificada`} />
         </div>
       )}
       <form onSubmit={onSubmit} className="space-y-6">
@@ -154,6 +153,13 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
             los datos
           </p>
         )}
+
+        <div className="flex items-center justify-between">
+          <Link href="/recovery" className="text-sm text-orange-500 hover:underline">
+            ¿Olvidaste tu Contraseña?
+          </Link>
+        </div>
+        
         <Button
           type="submit"
           disabled={isPending}
@@ -182,8 +188,7 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
           Google
         </button> */}
 
-      {/* <div className="flex items-center justify-between">
-        <div className="flex items-center">
+      {/* <div className="flex items-center">
           <Checkbox
             isSelected={rememberMe}
             onValueChange={setRememberMe}
@@ -192,11 +197,7 @@ export default function FormLogin({ isVerified }: { isVerified: boolean }) {
           <label htmlFor="remember-me" className="ml-2 text-sm text-gray-400">
             Recuerdame
           </label>
-        </div>
-        <a href="#" className="text-sm text-gray-400 hover:underline">
-          Need help?
-        </a>
-      </div> */}
+        </div> */}
 
       {/* <div className="mt-8">
         <p className="text-gray-400">

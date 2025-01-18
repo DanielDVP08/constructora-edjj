@@ -167,7 +167,7 @@ export async function updateBusiness(data: FieldValues) {
 
   form.set("profileimage", data.profileimage);
   form.set("newProfileImage", data.newProfileImage);
-  
+
   form.set("logoImage", data.companylogo);
   form.set("newLogoImage", data.newLogo);
 
@@ -193,7 +193,7 @@ export async function isValidPass(pass: string, userpass: string) {
 export async function sendCodeChangePass(email: string, code: string) {
   const form = new FormData();
 
-  form.set("email", email);  
+  form.set("email", email);
   form.set("code", code);
 
   await fetch("/api/sendcode", {
@@ -207,7 +207,7 @@ export async function sendCodeChangePass(email: string, code: string) {
 export async function changePass(pass: string, email: string) {
   const form = new FormData();
 
-  form.set("email", email);  
+  form.set("email", email);
   form.set("password", pass);
 
   await fetch("/api/changepass", {
@@ -220,4 +220,24 @@ export async function cerrarSession() {
   await signOut({
     redirectTo: "/signin",
   });
+}
+
+export async function isValidEmail(emailUser: string) {
+  console.log("entro",emailUser);
+  const form = new FormData();
+
+  form.set("email", emailUser);
+
+  const res = await fetch("/api/exitsemail", {
+    method: "POST",
+    body: form,
+  });
+
+  console.log(res)
+
+  if(!res.ok){
+    return false
+  }
+
+  return true;
 }

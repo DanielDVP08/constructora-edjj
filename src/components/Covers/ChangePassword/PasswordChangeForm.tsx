@@ -104,13 +104,12 @@ export default function PasswordChangeForm({ email, pass }: PasswordProps) {
       await changePass(newPassword, email);
       setIsDialogOpen(false);
       onClose();
-      await cerrarSession()
+      await cerrarSession();
     } else {
       // console.log(code);
       // console.log("no coincide");
       setErrorCode("El Codigo es incorrecto");
     }
-    
   };
 
   const sendCode = async () => {
@@ -276,14 +275,17 @@ export default function PasswordChangeForm({ email, pass }: PasswordProps) {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Cerrar
                   </Button>
-                  <button
-                    onClick={handleConfirmChange}
+                  <Button
+                    color="primary"
+                    onPress={handleConfirmChange}
                     disabled={!confirmationCode}
                   >
                     Confirmar
-                  </button>
+                  </Button>
                   {isResendActive && (
-                    <button onClick={handleResendCode}>Reenviar Codigo</button>
+                    <Button color="warning" onPress={handleResendCode}>
+                      Reenviar Codigo
+                    </Button>
                   )}
                 </ModalFooter>
               </>
